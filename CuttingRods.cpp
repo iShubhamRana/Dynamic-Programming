@@ -1,20 +1,22 @@
 
-/*
 
+
+
+/*
 Given a rod of length 'N' and profit for each piece of length of rod. Find max profit that
 can be generated.
-
 N=8
 length | 1  2  3  4  5  6   7   8
 price  | 1  5  8  9  10 17  17  20
 output: 22
-
 N=8
 length | 1  2  3  4  5  6   7   8
 price  | 3  5  8  9  10 17  17  20
 output: 24
 
 */
+
+
 
 
 
