@@ -61,8 +61,12 @@ if n is the index at which we are now and s be the sum we are looking for,then
 
 recurrence relation:
 
-f(n,s)= if(s-arr[n] >0) f(n-1,s-arr[n]) + f(n-1,s) + 1 (if the sum is div by current number(because maybe the number can make pairs with itself))
+f(n,s)= f(n-1,s) + f(n, s-arr[n]);
 
+2 cases:
+1. If  the sum was already completed in past then we will simply add it to the new reult we are forming.
+2. Second case in this,we will include the current index also, means if this element was included earlier also then we need to find
+    reqSum - current value. This way we can cover cases where same element repeatedly adds to the target sum alsoo.
 */
 
 long long findCombinations2(int sum, vector<int> arr) {
@@ -71,14 +75,17 @@ long long findCombinations2(int sum, vector<int> arr) {
 
     vector<vector<long long> > dp(n + 1, vector<long long> (sum + 1));
 
+    //first colum will be 1
+    for (int i = 0; i < n + 1; i++) {
+        dp[i][0] = 1;
+    }
+
     for (int i = 1; i <= n; i++) {
         for (int j = 1; j <= sum ; j++) {
             long long ans = 0;
-            if (j - arr[i - 1] >= 0)
-                ans += dp[i - 1][j - arr[i - 1]];
             ans += dp[i - 1][j];
-            if (j % arr[i - 1] == 0 )
-                ans++;
+            if (j - arr[i - 1] >= 0)
+                ans += dp[i][j - arr[i - 1]];
             dp[i][j] = ans;
         }
     }
