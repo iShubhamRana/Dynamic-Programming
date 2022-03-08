@@ -1,3 +1,8 @@
 https://www.geeksforgeeks.org/binomial-coefficient-dp-9/
 
 the question has so man good approaches do checkout the article
+
+//formula for inverse
+inv[1] = 1
+inv[i] = − ⌊m/i⌋ * inv[m mod i] mod m
+To use this formula, m has to be a prime.
